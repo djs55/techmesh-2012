@@ -7,11 +7,13 @@ let rt = ">>"
 let header =[ {
   styles=[Title];
   content= <:xml<
-   <h1>Programming the Xen Cloud using OCaml</h1>
+   <h1>OCaml in the cloud</h1>
    <br />
-   1430-1450, 14 Sept 2012<br />
-   Ocaml Users and Developers Workshop (OUD),<br />
-   Copenhagen, Denmark
+   building an open-source virtualization platform
+   <br />
+   Tech Mesh 2012
+   <br />
+   London
   >>;
 }]
 
@@ -30,7 +32,7 @@ let articles = List.flatten [
 ]
 
 let presentation = {
-  topic="OUD 2012: Programming the Xen Cloud using OCaml";
+  topic="Ocaml in the cloud: building an open-source virtualization platform";
   layout=Regular;
   articles;
 }

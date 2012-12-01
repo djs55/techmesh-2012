@@ -10,6 +10,7 @@ let activity = "background-color:#ffdddd"
 let rest = "background-color:#ddffdd"
 
 let slides = [
+(*
 {
   styles=[];
   content= <:html<
@@ -43,36 +44,156 @@ let slides = [
 
   >>
 };
+*)
 {
   styles=[];
   content= <:html<
-    <h3>The modern software stack is mature, big and complicated</h3>
+    <h3>What is XenServer?</h3>
     <ul>
-      <li>Hardware is abstracted
-        <ul>
-          <li> <b>good</b>: applications are portable</li>
-          <li> <b>bad</b>: out-dated abstractions obscure common hardware features</li>
-          <li>It's difficult to get high performance while remaining portable</li>
-        </ul>
-      </li>
-      <li>OSes handle multi-user, multi-process well
-        <ul>
-        <li> <b>good</b>: very flexible</li>
-        <li> <b>bad</b>: can be overkill for single-purpose apps; developers need sysadmin skills </li>
-        </ul>
-      </li>
-<!--
-      <li>Backward compatible ABIs are maintained
-        <ul>
-          <li> <b>good</b>: binaries continue to work</li>
-          <li> <b>bad</b>: hard to make changes, even when there is good reason to do it </li>
-        </ul>
-      </li>
--->
+      <li>a hypervisor platform</li>
+      <li>based on open-source xen, Linux, CentOS</li>
+      <li>turns a set of physical machines into a single, flexible substrate on which VMs can be installed, migrated around, etc etc</li>
+      <li>runs just beneath a "cloud orchestration layer" which controls: users, service offerings, billing</li>
     </ul>
-    <p><b>There is another way!</b></p>
+  >>;
+};
+{
+  styles=[];
+  content= <:html<
+    <h3>Where did we put the OCaml?</h3>
+    <p>Diagram</p>
+  >>;
+};
+{
+  styles=[];
+  content= <:html<
+    <h3>Why did we choose OCaml??!</h3>
+    <ul>
+    <li> We had:
+      <ul>
+      <li> a small team of smart, pragmatic people</li>
+      <li> an existing codebase in C/C++/python</li>
+      <li> ...</li>
+      <li> too many defect tickets of the form "component X SIGSEGV (again)"</li>
+      </ul>
+    </li>
+
+    </ul>
+  >>;
+};
+{
+  styles=[];
+  content= <:html<
+    <h3>Why did we choose OCaml??!</h3>
+    <ul>
+    <li> We knew we would spend too much time
+      <ul>
+      <li> tediously parsing strings (protocols, CLIs, config files)</li>
+      <li> tracking down the root cause of memory corruption</li>
+      </ul>
+    </li>
+    <li> We knew we would spend too little time
+      <ul>
+      <li> building features people wanted</li>
+      <li> thinking about any kind of "design" at all</li>
+      </ul>
+    </li>
+    </ul>
+  >>;
+};
+{
+  styles=[];
+  content= <:html<
+    <h3>Why did we choose OCaml??!</h3>
+    <ul>
+    <li> We knew we could <b>generate more value</b> by
+      <ul>
+      <li> using higher-level, safer tools</li>
+      <li> thinking and planning more than one step ahead</li>
+      </ul>
+    </li>
+    <li> .. but it's hard to justify anything that sounds like "rewrite" when
+      <ul>
+      <li> "the burn rate is X Mega USD per month"</li>
+      <li> "we have a Y month runway"</li>
+      </ul>
+    </li>
+    </ul>
+  >>;
+};
+{
+  styles=[];
+  content= <:html<
+    <h3>Why did we choose OCaml??!</h3>
+    <ul>
+    <li> we were asked to design a "hypervisor management API"
+      <ul>
+      <li> to manage all hosts within a "resource Pool" (cluster)</li>
+      <li> for sysadmins, 3rd party integrators</li>
+      <li> with language bindings in Java, C, C++</li>
+      <li> with documentation</li>
+      </ul>
+    </li>
+	<li> first task: create an API document for discussion</li>
+    <li> why write a doc when you can generate from a declarative spec?</li>
+    <li> .. and then you can genere code</li>
+    </ul>
+  >>;
+};
+{
+  styles=[];
+  content= <:html<
+    <h3>Why did we choose OCaml??!</h3>
+    <ul>
+    <li> 3 of us had FP experience (standard ML)</li>
+    <li> we knew that we could benefit from
+    <ul>
+      <li>type-checking</li>
+      <li>bounds-checking</li>
+    </ul>
+    </li>
+    <li> ocaml is like "a better C"
+    <ul>
+      <li> small, simple runtime (we described as "embedded")</li>
+      <li> small memory footprint, quick startup time</li>
+      <li> compiler generates decent native code</li>
+      <li> FFI allows us to drop to C if necessary</li>
+    </ul>
+    </li>
+    </ul>
   >>
 };
+{
+  styles=[];
+  content= <:html<
+    <h3>but... but... what if you can't hire anyone?</h3>
+<pre class="noprettyprint">
+$str:dl$ git shortlog -s -n | dedup-users | wc -l
+53
+</pre>
+    <section>
+    <object data="lorenz.svg" type="image/svg+xml">&nbsp;</object>
+    </section>
+  >>
+};
+{
+  styles=[];
+  content= <:html<
+    <h3>but... but... we won't be acquired if code is in ocaml!</h3>
+    <ul>
+      <li> maybe their devs will never understand the code?</li>
+      <ul>
+        <li> honestly ocaml is the easy bit; hypervisors are quite complex</li>
+      </ul>
+      <li> but the code is insecure: you can't run off-the-shelf buffer overflow detectors</li>
+      <ul>
+        <li> perhaps this did put some people off: probably a lucky escape</li>
+      </ul>
+    </ul>
+    <center><b> In 2007 Citrix bought XenSource for 500 M USD</b></center>
+  >>
+};
+
 {
   styles=[];
   content= <:html<

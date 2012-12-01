@@ -1,0 +1,123 @@
+What is XenServer?
+
+- a hypervisor platform
+- based on open-source xen, Linux, CentOS
+- turns a set of physical machines into a single, flexible substrate on which VMs can be
+  installed, migrated around, etc etc
+- runs just beneath a "cloud orchestration layer" which controls: users, service offerings,
+  billing
+  <diagram>?
+
+Where did we put the ocaml?
+
+  <diagram with zoom-in on the ocaml bits>
+
+Why did we choose to write a critical, systems-level hypervisor mgmt in a functional language?
+
+- this wasn't our initial goal, we had a small team of smart, pragmatic people
+- we had an existing codebase with far too many 'defect' tickets of the form
+  "X SIGSEGV (again)"
+- we would spend too much time
+-- parsing strings (for protocols, CLIs, config files) using C (and later C++)
+-- tracking down the root cause of memory corruption
+- and far too little time
+-- building features people wanted
+-- thinking about any kind of "design" at all 
+- we knew we could generate more value for the company by using a higher-level language & set of tools
+- we knew we could generate more value for the company by taking a step back, catching our breath
+  and thinking about next steps, planning more than one move ahead
+- but it's hard to justify the investment of a rewrite, since such efforts often fail and, within a
+  startup, everyone is acutely aware of the broad financial position, with frequent meeting explicitly
+  saying things like "burn rate is X Mega USD/month" (I've always wanted to use SI prefixes with money
+  but my bank account balance doesn't usually need any) and "our runway is Y months" (after which we
+  hit the control tower and explode presumably)
+
+- clearly this wasn't our initial plan
+- but it just so happened that we were asked to design a "hypervisor management API"
+-- this was to manage all hosts and VMs within a "resource pool" (aka cluster) remotely
+-- to allow both sysadmins to do their thing and 3rd parties to integrate new functionality themselves
+-- this was to have adequate documentation
+-- and language bindings (C, Java, python)
+-- first task: create an API description document so we can discuss it
+- ... why write a document when you can generate it from a nice declarative specification
+- ... which you can then use to generate code
+- ... first client API bindings
+- ... ... then implementation skeletons ...
+
+Why did we choose ocaml?
+
+- 3 of us had an FP background (standard ML)
+- we knew that type-checking would be a big win
+- ocaml has a small, simple runtime
+-- small memory footprint, short startup time
+- ocaml generates decent asm (helps placate low-level systems people)
+-- people often say they like C because they understand the assembly output and think they can understand the cost
+-- we like ocaml because we also think we understand the cost :)
+- decent FFI: important for interfacing to low-level libraries (system calls / hyper calls)
+
+"but... but... what if you can't hire anyone?"
+
+- well, of course we hired people
+  (contributor graph from github?)
+- we expect people to arrive and need training
+-- to understand our product and its ecosystem
+-- to understand our codebase and the principles behind it
+-- to understand our internal project management tools and processes
+-- learning enough ocaml to contribute just isn't a big problem
+
+"but... but... what if someone won't buy us because the code is ocaml?"
+
+- maybe their devs will never understand the code?
+-- honestly ocaml is the easy bit: understanding how the system fits
+-- together is tricky. Focusing on ocaml is like focusing on the colour
+-- of the bikeshed.
+- perhaps because they can't run an off-the-shelf buffer overflow detector on the code
+-- perhaps this did put some people off: probably a lucky escape
+... In 2007 Citrix bought XenSource for 500 Mega USD
+
+Systems programming in ocaml
+
+GC: bad for latency?
+
+Virtualization: lowering the barrier to entry
+- uniform software-friendly virtual hardware
+-- don't need to write 100s of device drivers!
+- choose whether to run "paravirtualised" or "fully virtualised"
+
+Mirage: a toolkit for programming the cloud
+
+Graph showing extreme block performance
+
+What about network stacks/ filesystems/ ... etc?
+
+How big are these things?
+
+Dealing with multicore
+
+Next-generation XenServer architecture
+
+Disaggregation
+- exploit the architecture of xen
+- driver domains
+- fault isolation
+- in-place upgrade
+- least privilege
+
+Ocaml and mirage
+- same code can run in userspace, or as a kernel, or as a kernel module (FreeBSD)
+-- ... or even client-side in a web-browser (via js_of_ocaml)
+- first-class I/O
+- only include code you really need
+- low overhead: possible to run 1 isolated helper per VM
+
+Summary
+
+Ocaml is great for systems programming: for writing both user-space and kernel-space code
+
+Ignore the FUD. Instead act rationally and increase your chances of success.
+- let your competitors make mistakes if they want to
+- build your products faster
+- eliminate the worst kind of bugs
+- focus your most limited resource -- people -- on the highest-level, most creative tasks for which there is no "automatic" solution
+
+
