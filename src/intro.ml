@@ -53,14 +53,21 @@ let slides = [
       <li>a hypervisor platform</li>
       <li>based on open-source xen, Linux, CentOS</li>
       <li>turns a set of physical machines into a single, flexible substrate on which VMs can be installed, migrated around, etc etc</li>
-      <li>runs just beneath a "cloud orchestration layer" which controls: users, service offerings, billing</li>
     </ul>
+    <br/>
+    <section>
+    <object data="xenserver.svg" type="image/svg+xml">&nbsp;</object>
+    </section>
+    <br/>
+<!--
+    <center><a href="http://www.citrix.com/products/xenserver/try.html">http://www.citrix.com/products/xenserver/try.html</a></center>
+-->
   >>;
 };
 {
   styles=[];
   content= <:html<
-    <h3>Where did we put the OCaml?</h3>
+    <h3>So... where did we put the OCaml?</h3>
     <p>Diagram</p>
   >>;
 };

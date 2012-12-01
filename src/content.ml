@@ -9,11 +9,15 @@ let header =[ {
   content= <:xml<
    <h1>OCaml in the cloud</h1>
    <br />
-   building an open-source virtualization platform
+   <b>building an open-source virtualization platform</b>
    <br />
-   Tech Mesh 2012
    <br />
-   London
+   Tech Mesh 2012, London
+   <br />
+   David Scott, XenServer System Architect, Citrix<br />
+   <br />
+       <a href="http://dave.recoil.org/">http://dave.recoil.org/</a> <br/>
+        <a href="http://twitter.com/mugofsoup">@mugofsoup</a>
   >>;
 }]
 
