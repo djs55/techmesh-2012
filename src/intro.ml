@@ -68,7 +68,9 @@ let slides = [
   styles=[];
   content= <:html<
     <h3>So... where did we put the OCaml?</h3>
-    <p>Diagram</p>
+    <section>
+    <object data="xenserver-ocaml.svg" type="image/svg+xml">&nbsp;</object>
+    </section>
   >>;
 };
 {
