@@ -54,6 +54,7 @@ let slides = [
       <ul>
       <li>What is XenServer? </li>
       <li> Where is the OCaml? </li>
+      <li>What was good, what could have been better? </li>
       </ul>
     </li>
     <li>Low-level systems programming in OCaml
@@ -255,7 +256,28 @@ $str:dl$ git shortlog -s -n | dedup-users | wc -l
     <center><b> In 2007 Citrix bought XenSource for 500 M USD</b></center>
   >>
 };
-
+{
+  styles=[];
+  content= <:html<
+    <h3>OCaml retrospective: What was good? What could have been better?</h3>
+    <ul>
+      <li> Good
+      <ul>
+        <li> segfaults are an endangered species </li>
+        <li> OCaml tools are very robust </li>
+        <li> new people were productive quickly </li>
+        <li> we could concentrate on the important high-level problems </li>
+      </ul>
+      </li>
+      <li> Could have been better
+      <ul>
+        <li> some confusion caused by multiple "standard libraries"</li>
+        <li> packaging: often easier to reinvent something than to share</li>
+      </ul>
+      </li>
+    </ul>
+  >>
+};
 {
   styles=[];
   content= <:html<
@@ -417,22 +439,22 @@ $str:dl$ opam --yes install mirage mirage-net cohttp mirage-fs
     <h3>"Project Windsor": where OCaml helps</h3>
     <ul>
       <li> The same code can be run in user-space (as normal) or kernel-space (via Mirage)
-        <ol>
+        <ul>
         <li>Debug in user-space, deploy in kernel-space</li>
-        </ol>
+        </ul>
       </li>
       <li> Only include the libraries you actually need
-        <ol>
+        <ul>
         <li> Low memory footprint</li>
         <li> Extremely fast boot</li>
         <li> Helps keep the TCB small</li>
-        </ol>
+        </ul>
       </li>
       <li> High performance
-        <ol>
+        <ul>
         <li> No layers of legacy code </li>
         <li> No need for separate kernel and user-space within a Mirage VM</li>
-        </ol>
+        </ul>
       </li>
     </ul>
   >>
@@ -457,16 +479,16 @@ $str:dl$ opam --yes install mirage mirage-net cohttp mirage-fs
     <h3>Summary</h3>
     <ul>
       <li> using higher-level tools like OCaml, helps us <b>generate more value</b> for the company
-        <ol>
+        <ul>
         <li> I claim the complexity of our software is due to the problem domain, not the programming language(s)</li>
         <li> You can think of OCaml as "a better C" (if that helps) </li>
-        </ol>
+        </ul>
       </li>
       <li> virtualization allows us to rethink how our OSes and applications are structured
-      <ol>
+      <ul>
         <li>Remember Rob Pike's "Systems Software Research is Irrelevant"?</li>
         <li>OCaml in kernel mode is liberating and fun</li>
-      </ol>
+      </ul>
       </li>
       <li><b>Citrix is a great company</b> - speak to me to find out more</li>
     </ul>
