@@ -78,7 +78,7 @@ let slides = [
     <h3>What is XenServer?</h3>
     <ul>
       <li>a hypervisor platform</li>
-      <li>based on open-source xen, Linux, CentOS</li>
+      <li>based on open-source <a href="http://www.xen.org/"><tt>Xen</tt></a>, <a href="http://kernel.org/"><tt>Linux</tt></a>, <a href="http://www.centos.org/"><tt>CentOS</tt></a></li>
       <li>turns a set of physical machines into a single, flexible substrate on which VMs can be installed, migrated around, etc etc</li>
     </ul>
     <br/>
@@ -108,7 +108,7 @@ let slides = [
     <li> Back in 2006 we were:
       <ul>
       <li> XenSource: a VC-funded spin-off from the <a href="http://www.cl.cam.ac.uk/">University of Cambridge Computer Lab</a></li>
-      <li> Building software to manage datacenters running the <a href="http://www.xen.org/">xen</a> hypervisor</li>
+      <li> Building software to manage datacenters running the <a href="http://www.xen.org/"><tt>Xen</tt></a> hypervisor</li>
       </ul>
     </li>
     <li> Back in 2006 we had:
@@ -219,7 +219,7 @@ let slides = [
       </ul>
     </li>
     <li> we quickly generated some API stubs, skeletons</li>
-    <li> we quickly hooked up the skeletons to some "actuators" (xen hypercalls etc)</li>
+    <li> we quickly hooked up the skeletons to some "actuators" (<tt>Xen</tt> hypercalls etc)</li>
     <li> ... </li>
     <li> the result was pretty impressive! </li>
     <li> ... </li>
@@ -248,7 +248,7 @@ $str:dl$ git shortlog -s -n | dedup-users-by-hand | wc -l
   styles=[];
   content= <:html<
     <h3>ok, you hired people-- but did they contribute?</h3>
-
+	<p>Obviously yes!</p>
     <section>
     <object data="xen-api.simple.svg" type="image/svg+xml">&nbsp;</object>
     </section>
@@ -257,11 +257,11 @@ $str:dl$ git shortlog -s -n | dedup-users-by-hand | wc -l
 {
   styles=[];
   content= <:html<
-    <h3>but... but... we won't be acquired if code is in ocaml!</h3>
+    <h3>but... but... we won't be acquired if code is in OCaml!</h3>
     <ul>
       <li> maybe their devs will never understand the code?</li>
       <ul>
-        <li> honestly ocaml is the easy bit; hypervisors are quite complex</li>
+        <li> honestly OCaml is the easy bit; hypervisors are quite complex</li>
       </ul>
       <li> but the code is insecure: you can't run off-the-shelf buffer overflow detectors</li>
       <ul>
@@ -329,7 +329,7 @@ $str:dl$ git shortlog -s -n | dedup-users-by-hand | wc -l
       <li>Protocol libraries, rather than layers
         <ul>
           <li> IP, UDP, TCP, HTTP, DNS, SSH, FAT32, OpenFlow </li>
-          <li> <a href="http://github.com/mirage/">http://github.com/mirage/</a></li>
+          <li> <a href="http://openmirage.org/">http://openmirage.org/</a></li>
         </ul>
       </li>
       <li>Modules, signatures, functors, recompilation rather than ABIs
@@ -407,7 +407,7 @@ $str:dl$ (cd opam &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install
 $str:dl$ opam init default git://github.com/mirage/opam-repository
 $str:dl$ opam remote -add dev git://github.com/mirage/opam-repo-dev
 </pre>
-     <p>Switch to xen and install mirage</p>
+     <p>Switch to <tt>Xen</tt> and install mirage</p>
 <pre class="noprettyprint">
 $str:dl$ opam switch -install 3.12.1+mirage-xen
 $str:dl$ opam switch 3.12.1+mirage-xen
@@ -490,7 +490,7 @@ $str:dl$ opam --yes install mirage mirage-net cohttp mirage-fs
   content= <:html<
     <h3>Example: xenstore service</h3>
     <ul>
-      <li>A critical service on a <tt>xen</tt> host, needed by all control operations.</li>
+      <li>A critical service on a <tt>Xen</tt> host, needed by all control operations.</li>
       <li>Provides an access-controlled key-value store to all VMs.</li>
     </ul>
     <section>
