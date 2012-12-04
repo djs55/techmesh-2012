@@ -50,16 +50,16 @@ let slides = [
   content= <:html<
     <h3>Talk structure</h3>
     <ol>
-    <li><b>XenServer and OCaml: a brief history</b>
+    <li><b>XenServer and OCaml: a brief history
       <ul>
       <li>What is XenServer? </li>
       <li> Where is the OCaml? </li>
       <li>What was good, what could have been better? </li>
-      </ul>
+      </ul></b>
     </li>
     <li>Low-level systems programming in OCaml
       <ul>
-      <li>OCaml in kernel space;</li>
+      <li>OCaml in kernel space</li>
       <li>Run OCaml directly on the cloud</li>
       </ul>
     </li>
@@ -103,7 +103,7 @@ let slides = [
 {
   styles=[];
   content= <:html<
-    <h3>Why did we choose OCaml??!</h3>
+    <h3>XenServer and OCaml: a short history</h3>
     <ul>
     <li> Back in 2006 we were:
       <ul>
@@ -126,7 +126,7 @@ let slides = [
 {
   styles=[];
   content= <:html<
-    <h3>Why did we choose OCaml??!</h3>
+    <h3>XenServer and OCaml: a short history</h3>
     <ul>
     <li> We knew we were spending <b>waaaay</b> too much time
       <ul>
@@ -146,7 +146,7 @@ let slides = [
 {
   styles=[];
   content= <:html<
-    <h3>Why did we choose OCaml??!</h3>
+    <h3>XenServer and OCaml: a short history</h3>
     <ul>
     <li> We knew we could <b>generate more value</b> by
       <ul>
@@ -166,7 +166,7 @@ let slides = [
 {
   styles=[];
   content= <:html<
-    <h3>Why did we choose OCaml??!</h3>
+    <h3>XenServer and OCaml: a short history</h3>
     <ul>
     <li> we were asked to design a "hypervisor management API"
       <ul>
@@ -185,7 +185,7 @@ let slides = [
 {
   styles=[];
   content= <:html<
-    <h3>Why did we choose OCaml??!</h3>
+    <h3>XenServer and OCaml: a short history</h3>
     <ul>
     <li> 3 of us had FP experience (standard ML and then OCaml)</li>
     <li> we knew that we could benefit from
@@ -195,7 +195,8 @@ let slides = [
       <li>bounds-checking</li>
     </ul>
     </li>
-    <li> ocaml is like "a better C"
+    <li> OCaml is a "multi-paradigm" programming language</li>
+    <li> OCaml is like "a better C"
     <ul>
       <li> small, simple runtime (we described as "embedded")</li>
       <li> small memory footprint, quick startup time</li>
@@ -223,6 +224,7 @@ let slides = [
     <li> the result was pretty impressive! </li>
     <li> ... </li>
     <li> shall we move the product over to this new codebase then? </li>
+    <li><b>What about the objections?</b></li>
     </ul>
   >>
 };
@@ -230,12 +232,25 @@ let slides = [
   styles=[];
   content= <:html<
     <h3>but... but... what if you can't hire anyone?</h3>
+    <p>Not a problem in practice:</p>
 <pre class="noprettyprint">
-$str:dl$ git shortlog -s -n | dedup-users | wc -l
+$str:dl$ git shortlog -s -n | dedup-users-by-hand | wc -l
 53
 </pre>
+    <p>We turned it to our advantage by</p>
+    <ul>
+      <li> making job adverts more exciting</li>
+      <li> attracting lots of interesting people (who would excel in any language)</li>
+    </ul>
+  >>
+};
+{
+  styles=[];
+  content= <:html<
+    <h3>ok, you hired people-- but did they contribute?</h3>
+
     <section>
-    <object data="lorenz.svg" type="image/svg+xml">&nbsp;</object>
+    <object data="xen-api.simple.svg" type="image/svg+xml">&nbsp;</object>
     </section>
   >>
 };
@@ -275,6 +290,7 @@ $str:dl$ git shortlog -s -n | dedup-users | wc -l
         <li> packaging: often easier to reinvent something than to share</li>
       </ul>
       </li>
+      <li>OCaml labs and OCamlPro to the rescue!</li>
     </ul>
   >>
 };
@@ -289,11 +305,11 @@ $str:dl$ git shortlog -s -n | dedup-users | wc -l
       <li> Where is the OCaml? </li>
       </ul>
     </li>
-    <li><b>Low-level systems programming in OCaml</b>
+    <li><b>Low-level systems programming in OCaml
       <ul>
-      <li>OCaml in kernel space;</li>
+      <li>OCaml in kernel space</li>
       <li>Run OCaml directly on the cloud</li>
-      </ul>
+      </ul></b>
     </li>
     <li>Future XenServer architecture
       <ul>
@@ -365,6 +381,15 @@ $str:dl$ git shortlog -s -n | dedup-users | wc -l
 
 { styles=[];
   content= <:html<
+    <h3>The Mirage Way</h3>
+    <section>
+    <object data="yourapp.svg" type="image/svg+xml">&nbsp;</object>
+    </section>
+  >>
+};
+
+{ styles=[];
+  content= <:html<
     <h3>Example: this presentation</h3>
     <section>
     <object data="website.svg" type="image/svg+xml">&nbsp;</object>
@@ -404,14 +429,14 @@ $str:dl$ opam --yes install mirage mirage-net cohttp mirage-fs
     </li>
     <li>Low-level systems programming in OCaml
       <ul>
-      <li>OCaml in kernel space;</li>
+      <li>OCaml in kernel space</li>
       <li>Run OCaml directly on the cloud</li>
       </ul>
     </li>
-    <li><b>Future XenServer architecture</b>
+    <li><b>Future XenServer architecture
       <ul>
       <li>Where OCaml fits</li>
-      </ul>
+      </ul></b>
     </li>
   </ol>
   >>;
