@@ -15,7 +15,7 @@ let get_file filename =
     match_lwt kv_ro#read filename with
     |None -> return None
     |Some s -> 
-      lwt x = Lwt_stream.to_list s >|= Cstruct.copy_buffers in
+      lwt x = Lwt_stream.to_list s >|= Cstruct.copyv in
       return (Some x)
   )
 

@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: e166ce3b1d0dd2199618f01ddf827c60)
+# DO NOT EDIT (digest: 93eb4bda32a686559b61129b485dee54)
 # Ignore VCS directories, you can use the same kind of rule outside 
 # OASIS_START/STOP if you want to exclude directories that contains 
 # useless stuff for the build process
@@ -20,11 +20,15 @@
 <src/main.{native,nobj.o}>: pkg_uri
 <src/main.{native,nobj.o}>: pkg_re
 <src/main.{native,nobj.o}>: pkg_cow
+<src/main.{native,nobj.o}>: pkg_ocplib-endian
+<src/main.{native,nobj.o}>: pkg_ocplib-endian.bigstring
 <src/*.ml{,i}>: pkg_mirage
 <src/*.ml{,i}>: pkg_cohttp.mirage
 <src/*.ml{,i}>: pkg_uri
 <src/*.ml{,i}>: pkg_re
 <src/*.ml{,i}>: pkg_cow
+<src/*.ml{,i}>: pkg_ocplib-endian
+<src/*.ml{,i}>: pkg_ocplib-endian.bigstring
 <src/main.{native,nobj.o}>: custom
 # OASIS_STOP
 <src/*.ml>: syntax_camlp4o, pkg_lwt.syntax, pkg_cow.syntax

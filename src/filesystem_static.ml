@@ -89,20 +89,20 @@ let file_chunks = function
 "-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans Bold\"\n         id=\"tspan4945\">quickly, cheaply</tspan><tspan\n         sodipodi:role=\"line\"\n         x=\"680\"\n         y=\"-202.2532\"\n         style=\"font-size:20.30769157px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans Bold\"\n         id=\"tspan4949\">scale-out across</tspan><tspan\n         sodipodi:role=\"line\"\n         x=\"680\"\n         y=\"-176.86859\"\n         style=\"font-size:20.30769157px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans Bold\"\n         id=\"tspan4951\">the cloud!</tspan></text>\n    <text\n       xml:space=\"preserve\"\n       style=\"font-size:33.84615326px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans\"\n       x=\"365.53845\"\n       y=\"352.20831\"\n       id=\"text4176-8-4-8\"\n       sodipodi:linespacing=\"125%\"><tspan\n         sodipodi:role=\"line\"\n         x=\"365.53845\"\n         y=\"352.20831\"\n         style=\"font-size:20.30769157px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans\"\n         id=\"tspan4184-8-0-7\">(millions of cores!)</tspan></text>\n  </g>\n</svg>\n" ]
  | _ -> None
 
-let file_list = ["styles.css"; "storage-colour.svg"; "dns-qps.svg"; "xenstore.svg"; "prettify.js"; "xen-api.simple.svg"; "lorenz.svg"; "slides.js"; "yourapp.svg"; "website.svg"; "xenserver.svg"; "xenserver-ocaml.svg";  ]
+let file_list = ["website.svg"; "lorenz.svg"; "xenstore.svg"; "xenserver.svg"; "yourapp.svg"; "slides.js"; "xen-api.simple.svg"; "dns-qps.svg"; "styles.css"; "xenserver-ocaml.svg"; "prettify.js"; "storage-colour.svg";  ]
 let size = function
- |"styles.css" |"/styles.css" -> Some 11706L
- |"storage-colour.svg" |"/storage-colour.svg" -> Some 48561L
- |"dns-qps.svg" |"/dns-qps.svg" -> Some 30271L
- |"xenstore.svg" |"/xenstore.svg" -> Some 13111L
- |"prettify.js" |"/prettify.js" -> Some 54257L
- |"xen-api.simple.svg" |"/xen-api.simple.svg" -> Some 28607L
- |"lorenz.svg" |"/lorenz.svg" -> Some 56670L
- |"slides.js" |"/slides.js" -> Some 14772L
- |"yourapp.svg" |"/yourapp.svg" -> Some 30334L
  |"website.svg" |"/website.svg" -> Some 16987L
+ |"lorenz.svg" |"/lorenz.svg" -> Some 56670L
+ |"xenstore.svg" |"/xenstore.svg" -> Some 13111L
  |"xenserver.svg" |"/xenserver.svg" -> Some 9543L
+ |"yourapp.svg" |"/yourapp.svg" -> Some 30334L
+ |"slides.js" |"/slides.js" -> Some 14772L
+ |"xen-api.simple.svg" |"/xen-api.simple.svg" -> Some 28607L
+ |"dns-qps.svg" |"/dns-qps.svg" -> Some 30271L
+ |"styles.css" |"/styles.css" -> Some 11706L
  |"xenserver-ocaml.svg" |"/xenserver-ocaml.svg" -> Some 14939L
+ |"prettify.js" |"/prettify.js" -> Some 54257L
+ |"storage-colour.svg" |"/storage-colour.svg" -> Some 48561L
  |_ -> None
 
 end
@@ -126,9 +126,9 @@ let read name =
        match !chunks with
        |hd :: tl -> 
          chunks := tl;
-         let pg = OS.Io_page.get () in
+         let pg = Cstruct.of_bigarray (OS.Io_page.get ()) in
          let len = String.length hd in
-         Cstruct.set_buffer hd 0 pg 0 len;
+         Cstruct.blit_from_string hd 0 pg 0 len;
          return (Some (Cstruct.sub pg 0 len))
        |[] -> return None
      )))

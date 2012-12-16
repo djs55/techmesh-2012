@@ -33,5 +33,5 @@ Executable "www.xen"
   Target:             xen
   CompiledObject:     native
   Install:            false
-  BuildDepends:       mirage, cohttp.mirage, uri, re, cow ( >= 0.3.2)
+  BuildDepends:       mirage, cohttp.mirage, uri, re, cow ( >= 0.3.2), ocplib-endian, ocplib-endian.bigstring
 
